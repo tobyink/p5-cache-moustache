@@ -74,7 +74,7 @@ sub set
 	
 	$expires_in = $cache->{'~~~~default_expires_in'} if !defined $expires_in;
 	
-	if ($expires_in =~ /^(\d+)\s*([A-Za-z]+)$/)
+	if ($expires_in =~ /^(\d*)\s*([A-Za-z]+)$/)
 	{
 		($expires_in, my $mult) = ($1, $2);
 		$expires_in *= ($multipliers{$mult} || $multipliers{lc $mult});
@@ -88,6 +88,7 @@ sub get
 {
 	my ($cache, $key) = @_;
 	return if $key =~ /^~~~~/;
+	return unless exists $cache->{$key};
 	
 	my $expires_at = $cache->{$key}[1];
 	if ($expires_at >= 0 and $expires_at < time)
