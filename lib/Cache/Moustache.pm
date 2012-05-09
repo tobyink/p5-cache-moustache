@@ -77,6 +77,7 @@ sub set
 	if ($expires_in =~ /^(\d*)\s*([A-Za-z]+)$/)
 	{
 		($expires_in, my $mult) = ($1, $2);
+		$expires_in = 1 unless defined $expires_in && length $expires_in;
 		$expires_in *= ($multipliers{$mult} || $multipliers{lc $mult});
 	}
 	
