@@ -26,9 +26,10 @@ sub isa
 sub new
 {
 	my ($class, %args) = @_;
+	return $class if ref $class && $class->isa(__PACKAGE__);
 	my %self = map { ;"~~~~$_" => $args{$_} } keys %args;
 	$self{'~~~~default_expires_in'} ||= 3600;
-	bless \%self, $class;
+	bless {%self}, $class;
 }
 
 my %multipliers = (
@@ -57,10 +58,19 @@ my %multipliers = (
 	years    => 31536000,
 );
 
+sub _clone
+{
+	require Storable;
+	shift;
+	goto \&Storable::dclone;
+}
+
 sub set
 {
 	my ($cache, $key, $data, $expires_in) = @_;
 	return if $key =~ /^~~~~/;
+	
+	$data = $cache->_clone($data) if ref $data && $cache->{'~~~~clone_references'};
 	
 	$expires_in = $cache->{'~~~~default_expires_in'} if !defined $expires_in;
 	
@@ -115,6 +125,18 @@ sub purge
 	return scalar(@keys);
 }
 
+sub get_keys
+{
+	my $cache = shift;
+	my @keys = grep { !/^~~~~/ } keys %$cache;
+	return @keys;
+}
+
+sub size
+{
+	scalar( my @keys = shift->get_keys );
+}
+
 sub AUTOLOAD
 {
 	return;
@@ -155,17 +177,41 @@ cached objects), and has no dependencies. I didn't say "no non-core
 dependencies"; I said no dependencies. This thing doesn't even
 C<use strict>. It's basically just a hashref with methods.
 
+I would have called it Cache::Tiny, but then people might have
+been tempted to actually use it.
+
 =head2 Constructor
 
 =over
 
 =item C<< new(%options) >>
 
-Only one option is supported: I<default_expires_in>, which is the
-length of time (in seconds) before a cached value should be
+Called as a class method returns a shiny new cache. Called as
+an object (instance) method, just returns C<< $self >>.
+
+Supported options:
+
+=over
+
+=item default_expires_in
+
+The length of time (in seconds) before a cached value should be
 considered expired. The default is an hour. If you specify -1,
 then things will never expire. If you specify 0, that's dumb, so
 Cache::Moustache will assume that you meant an hour.
+
+=item clone_references
+
+If true, then Cache::Moustache will clone any references you
+ask it to cache. This feature uses the C<dclone> function from
+L<Storable>, so violates Cache::Moustache's "no dependencies"
+rule. Yeah, we're so cool we don't even follow our own rules!
+
+This slows down the cache, so don't use it unless you have to.
+(I only added this feature to pass some test cases, I don't
+actually want to use it myself.)
+
+=back
 
 =back
 
@@ -198,6 +244,23 @@ pairs removed (one or none).
 
 Remove any expired key/value pairs from the cache. Returns the
 number of pairs removed.
+
+=item C<< size >>
+
+Returns the number of items in the cache (including expired items
+that have not been purged). Note that unlike L<Cache::Cache> and
+L<CHI>, it does not return the total size of all items in bytes.
+
+=item C<< size >>
+
+Returns the number of items in the cache (including expired items
+that have not been purged). Note that unlike L<Cache::Cache> and
+L<CHI>, it does not return the total size of all items in bytes.
+
+=item C<< get_keys >>
+
+Returns the keys of the items in the cache (including expired items
+that have not been purged). 
 
 =item C<< isa($class) >>
 
