@@ -1,17 +1,30 @@
 # This file acts as the project's changelog.
 
-@prefix :        <http://usefulinc.com/ns/doap#> .
+@prefix :        <http://purl.org/NET/cpan-uri/dist/Cache-Moustache/> .
+@prefix doap:    <http://usefulinc.com/ns/doap#> .
 @prefix dcs:     <http://ontologi.es/doap-changeset#> .
 @prefix dc:      <http://purl.org/dc/terms/> .
-@prefix dist:    <http://purl.org/NET/cpan-uri/dist/Cache-Moustache/> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-dist:project :release dist:v_0-001 .
-dist:v_0-001
-	a               :Version ;
-	dc:issued       "2012-05-08"^^xsd:date ;
-	:revision       "0.001"^^xsd:string ;
-	:file-release   <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Cache-Moustache-0.001.tar.gz> ;
-	rdfs:label      "Initial release" .
+:project doap:release :v_0-001 .
+:v_0-001
+	a                 doap:Version ;
+	dc:issued         "2012-05-09"^^xsd:date ;
+	doap:revision     "0.001"^^xsd:string ;
+	doap:file-release <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Cache-Moustache-0.001.tar.gz> ;
+	rdfs:label        "The Salvador Dali" .
 
+:project doap:release :v_0-002 .
+:v_0-002
+	a                 doap:Version ;
+	dc:issued         "2012-05-10"^^xsd:date ;
+	doap:revision     "0.002"^^xsd:string ;
+	doap:file-release <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Cache-Moustache-0.002.tar.gz> ;
+	rdfs:label        "The Fu-Manchu" ;
+	dcs:changeset [
+		dcs:versus :v_0-001;
+		dcs:item   [ rdfs:label "Cache::CacheTester no longer requires Cache::Cache."@en ; a dcs:Bugfix ];
+		dcs:item   [ rdfs:label "The 'empty' method erroneously asserted that its return value was 0 or 1." ; a dcs:Documentation, dcs:Bugfix ] ;
+		dcs:item   [ rdfs:label "Mention that keys beginning '~~~~' will not have their values stored." ; a dcs:Documentation, dcs:Addition ]
+		].
