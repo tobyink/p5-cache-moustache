@@ -12,7 +12,6 @@ package Cache::CacheTester;
 
 use strict;
 use Cache::BaseCacheTester;
-use Cache::Cache;
 
 our @ISA           = qw( Cache::BaseCacheTester );
 our $EXPIRES_DELAY = 2;
@@ -590,58 +589,3 @@ sub Arrays_Are_Equal
 
 
 1;
-
-
-__END__
-
-=pod
-
-=head1 NAME
-
-Cache::CacheTester -- a class for regression testing caches
-
-=head1 DESCRIPTION
-
-The CacheTester is used to verify that a cache implementation honors
-its contract.
-
-=head1 SYNOPSIS
-
-  use Cache::MemoryCache;
-  use Cache::CacheTester;
-
-  my $cache = new Cache::MemoryCache( );
-
-  my $cache_tester = new Cache::CacheTester( 1 );
-
-  $cache_tester->test( $cache );
-
-=head1 METHODS
-
-=over
-
-=item B<new( $initial_count )>
-
-Construct a new CacheTester object, with the counter starting at
-I<$initial_count>.
-
-=item B<test( )>
-
-Run the tests.
-
-=back
-
-=head1 SEE ALSO
-
-Cache::Cache, Cache::BaseCacheTester
-
-=head1 AUTHOR
-
-Original author: DeWitt Clinton <dewitt@unto.net>
-
-Last author:     $Author: dclinton $
-
-Copyright (C) 2001-2003 DeWitt Clinton
-
-=cut
-
