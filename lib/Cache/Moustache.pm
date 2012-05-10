@@ -5,7 +5,7 @@ use 5.005;
 
 BEGIN {
 	$Cache::Moustache::AUTHORITY = 'cpan:TOBYINK';
-	$Cache::Moustache::VERSION   = '0.001';
+	$Cache::Moustache::VERSION   = '0.002';
 }
 
 sub isa
@@ -228,6 +228,11 @@ argument that allows you to override I<default_expires_in>. You
 can use strings like "3 minutes" like what Cache::Cache supports,
 but I don't recommend it.
 
+Cache::Moustache uses keys beginning with "~~~~" for its own
+internal purposes. If you try to store a value with a key like that,
+no error will be thrown, but it will not be stored; the value will
+effectively expire instantly.
+
 =item C<< get($key) >>
 
 Retrieve the value associated with a key (unless it's expired).
@@ -240,7 +245,7 @@ pairs removed (one or none).
 =item C<< clear >>
 
 Empty everything from the cache. Returns the number of key/value
-pairs removed (one or none).
+pairs removed.
 
 =item C<< purge >>
 
@@ -283,7 +288,8 @@ L<http://rt.cpan.org/Dist/Display.html?Queue=Cache-Moustache>.
 
 =head1 SEE ALSO
 
-L<CHI>, L<Cache::Cache>.
+L<CHI>, L<Cache::Cache>,
+L<http://www.worldbeardchampionships.com/>.
 
 =head1 AUTHOR
 
