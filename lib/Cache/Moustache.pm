@@ -5,7 +5,7 @@ use 5.005;
 
 BEGIN {
 	$Cache::Moustache::AUTHORITY = 'cpan:TOBYINK';
-	$Cache::Moustache::VERSION   = '0.002';
+	$Cache::Moustache::VERSION   = '0.003';
 }
 
 sub isa

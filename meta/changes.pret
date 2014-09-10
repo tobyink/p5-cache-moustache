@@ -28,3 +28,10 @@
 		dcs:item   [ rdfs:label "The 'empty' method erroneously asserted that its return value was 0 or 1." ; a dcs:Documentation, dcs:Bugfix ] ;
 		dcs:item   [ rdfs:label "Mention that keys beginning '~~~~' will not have their values stored." ; a dcs:Documentation, dcs:Addition ]
 		].
+
+`Cache-Moustache 0.003 cpan:TOBYINK`
+	issued    2014-09-10;
+	changeset [
+		item "Switch to Dist::Inkt."^^Packaging;
+	].
+
