@@ -35,3 +35,9 @@
 		item "Switch to Dist::Inkt."^^Packaging;
 	].
 
+`Cache-Moustache 0.004 cpan:TOBYINK`
+	issued    2014-09-14;
+	changeset [
+		item "Fix repo link."^^Packaging;
+	].
+
