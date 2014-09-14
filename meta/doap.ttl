@@ -13,7 +13,7 @@
 	:shortdesc      "you'd have to be insane to use a module called Cache::Moustache, wouldn't you?" ;
 	:homepage       <https://metacpan.org/release/Cache-Moustache> ;
 	:download-page  <https://metacpan.org/release/Cache-Moustache> ;
-	:respository    [ a :HgRepository; :browse <https://bitbucket.org/tobyink/p5-cache-moustache> ];
+	:repository     [ a :GitRepository; :browse <https://github.com/tobyink/p5-cache-moustache> ];
 	:bug-database   <http://rt.cpan.org/Dist/Display.html?Queue=Cache-Moustache> ;
 	:created        "2012-05-08"^^xsd:date ;
 	:license        <http://dev.perl.org/licenses/> ;
