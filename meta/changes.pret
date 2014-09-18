@@ -43,7 +43,7 @@
 		item "Fix repo link."^^Packaging;
 	].
 
-`Cache-Moustache 0.004 cpan:TOBYINK`
+`Cache-Moustache 0.005 cpan:TOBYINK`
 	issued    2014-09-19;
 	label     "The Imperial";
 	changeset [
