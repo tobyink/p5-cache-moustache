@@ -541,7 +541,7 @@ sub _test_sixteen
     $cache = $cache->new( { 'auto_purge_interval' => $expires_in } );
   };
 
-  ( not defined @$ ) ?
+  ( not @$ ) ?
     $self->ok( ) : $self->not_ok( "couldn't create autopurge cache" );
 }
 

@@ -50,5 +50,5 @@
 		item "Declare explicit dependency on Perl 5.005."^^Packaging;
 		item "Fill in missing moustache styles in changelog."^^Packaging;
 		item "Copyright 2014."^^Documentation;
+		item "Avoid defined(@array) in bundled Cache::CacheTester."^^Tests;
 	].
-
