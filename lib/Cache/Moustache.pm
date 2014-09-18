@@ -8,7 +8,7 @@ use warnings;
 
 BEGIN {
 	$Cache::Moustache::AUTHORITY = 'cpan:TOBYINK';
-	$Cache::Moustache::VERSION   = '0.004';
+	$Cache::Moustache::VERSION   = '0.005';
 }
 
 sub isa

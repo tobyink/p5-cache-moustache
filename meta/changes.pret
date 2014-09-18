@@ -27,17 +27,28 @@
 		dcs:item   [ rdfs:label "Cache::CacheTester no longer requires Cache::Cache."@en ; a dcs:Bugfix ];
 		dcs:item   [ rdfs:label "The 'empty' method erroneously asserted that its return value was 0 or 1." ; a dcs:Documentation, dcs:Bugfix ] ;
 		dcs:item   [ rdfs:label "Mention that keys beginning '~~~~' will not have their values stored." ; a dcs:Documentation, dcs:Addition ]
-		].
+	].
 
 `Cache-Moustache 0.003 cpan:TOBYINK`
 	issued    2014-09-10;
+	label     "The Pencil";
 	changeset [
 		item "Switch to Dist::Inkt."^^Packaging;
 	].
 
 `Cache-Moustache 0.004 cpan:TOBYINK`
 	issued    2014-09-14;
+	label     "The Handlebar";
 	changeset [
 		item "Fix repo link."^^Packaging;
+	].
+
+`Cache-Moustache 0.004 cpan:TOBYINK`
+	issued    2014-09-19;
+	label     "The Imperial";
+	changeset [
+		item "Declare explicit dependency on Perl 5.005."^^Packaging;
+		item "Fill in missing moustache styles in changelog."^^Packaging;
+		item "Copyright 2014."^^Documentation;
 	].
 
