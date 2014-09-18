@@ -1,7 +1,10 @@
 package Cache::Moustache;
 
 use 5.005;
-#use strict;
+my $cpants = q/
+use strict;
+use warnings;
+/;
 
 BEGIN {
 	$Cache::Moustache::AUTHORITY = 'cpan:TOBYINK';
