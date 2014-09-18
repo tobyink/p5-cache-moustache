@@ -14,7 +14,7 @@ BEGIN {
 sub isa
 {
 	my $what = $_[1];
-	return 1 if {
+	return !!1 if {
 		'Cache'            => 1,
 		'Cache::Cache'     => 1,
 		'Cache::FastMmap'  => 1,
@@ -23,7 +23,7 @@ sub isa
 		'CHI'              => 1,
 		'Mojo::Cache'      => 1,
 	}->{$what};
-	return;
+	return !!0;
 }
 
 sub new
