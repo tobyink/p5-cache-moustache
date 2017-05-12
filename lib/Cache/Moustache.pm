@@ -107,6 +107,13 @@ sub get
 sub remove
 {
 	my ($cache, $key) = @_;
+	
+	if (ref $key eq 'Regexp') {
+		my @keys = grep { $_ =~ $key and not !/^~~~~/ } keys %$cache;
+		delete @{$cache}{@keys};
+		return scalar(@keys);
+	}
+	
 	return 0 if $key =~ /^~~~~/;
 	return( (delete $cache->{$key}) ? 1 : 0 );
 }
@@ -244,6 +251,9 @@ Retrieve the value associated with a key (unless it's expired).
 
 Removes a key/value pair from the cache. Returns the number of
 pairs removed (one or none).
+
+C<< $key >> may be a regular expression, in which case multiple
+keys may be removed.
 
 =item C<< clear >>
 
