@@ -25,7 +25,7 @@
 	dcs:changeset [
 		dcs:versus :v_0-001;
 		dcs:item   [ rdfs:label "Cache::CacheTester no longer requires Cache::Cache."@en ; a dcs:Bugfix ];
-		dcs:item   [ rdfs:label "The 'empty' method erroneously asserted that its return value was 0 or 1." ; a dcs:Documentation, dcs:Bugfix ] ;
+		dcs:item   [ rdfs:label "The `empty` method erroneously asserted that its return value was 0 or 1." ; a dcs:Documentation, dcs:Bugfix ] ;
 		dcs:item   [ rdfs:label "Mention that keys beginning '~~~~' will not have their values stored." ; a dcs:Documentation, dcs:Addition ]
 	].
 
@@ -51,4 +51,14 @@
 		item "Fill in missing moustache styles in changelog."^^Packaging;
 		item "Copyright 2014."^^Documentation;
 		item "Avoid defined(@array) in bundled Cache::CacheTester."^^Tests;
+	].
+
+`Cache-Moustache 0.006 cpan:TOBYINK`
+	issued    2017-05-12;
+	label     "The Horseshoe";
+	changeset [
+		item "`remove` shouldn't ever return empty in a list context."^^Bugfix;
+		item "Allow `remove` to be called with a regular expression parameter."^^Change;
+		item "Copyright 2017."^^Documentation;
+		item "Minor optimizations."^^Change;
 	].
