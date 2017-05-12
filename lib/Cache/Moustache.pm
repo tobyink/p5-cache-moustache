@@ -107,7 +107,7 @@ sub get
 sub remove
 {
 	my ($cache, $key) = @_;
-	return if $key =~ /^~~~~/;
+	return 0 if $key =~ /^~~~~/;
 	return( (delete $cache->{$key}) ? 1 : 0 );
 }
 
