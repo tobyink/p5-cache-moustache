@@ -121,7 +121,7 @@ sub remove
 sub clear
 {
 	my $cache = shift;
-	my @keys = grep { !/^~~~~/ } keys %$cache;
+	my @keys = grep !/^~~~~/, keys %$cache;
 	delete $cache->{$_} for @keys;
 	return scalar(@keys);
 }
@@ -132,7 +132,7 @@ sub purge
 	my $now   = time;
 	my @keys  =
 		grep { my $e = $cache->{$_}[1]; $e >= 0 && $e < $now }
-		grep { !/^~~~~/ } keys %$cache;
+		grep !/^~~~~/, keys %$cache;
 	delete @{$cache}{@keys};
 	return scalar(@keys);
 }
@@ -140,7 +140,7 @@ sub purge
 sub get_keys
 {
 	my $cache = shift;
-	my @keys = grep { !/^~~~~/ } keys %$cache;
+	my @keys = grep !/^~~~~/, keys %$cache;
 	return @keys;
 }
 
