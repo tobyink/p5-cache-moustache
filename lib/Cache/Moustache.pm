@@ -126,7 +126,7 @@ sub purge
 	my @keys  =
 		grep { my $e = $cache->{$_}[1]; $e >= 0 && $e < $now }
 		grep { !/^~~~~/ } keys %$cache;
-	delete $cache->{$_} for @keys;
+	delete @{$cache}{@keys};
 	return scalar(@keys);
 }
 
