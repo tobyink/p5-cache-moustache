@@ -32,7 +32,7 @@ sub new
 	return $class if ref $class && $class->isa(__PACKAGE__);
 	my %self = map { ;"~~~~$_" => $args{$_} } keys %args;
 	$self{'~~~~default_expires_in'} ||= 3600;
-	bless {%self}, $class;
+	bless \%self, $class;
 }
 
 my %multipliers = (
